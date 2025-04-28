@@ -14,6 +14,11 @@ Docker Compose deployment and services running ✅
 ![Docker Running](dockercompose.png)
 ![Docker Running](docker-ps.png)
 
+	•	Prometheus for metrics collection
+(prometheus.png)
+
+
+
 
 
 
