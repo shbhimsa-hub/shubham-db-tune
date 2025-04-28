@@ -11,8 +11,8 @@ Deployed and verified the following services using Docker Compose:
 	•	PG Badger for PostgreSQL logs analysis
 
 Docker Compose deployment and services running ✅
-![Docker Running](/Users/shubham/Desktop/screenshot/dockercompose.png)
-![Docker Running](/Users/shubham/Desktop/screenshot/docker-ps.png)
+![Docker Running](dockercompose.png)
+![Docker Running](docker-ps.png)
 
 
 
