@@ -15,9 +15,11 @@ Docker Compose deployment and services running ✅
 ![Docker Running](docker-ps.png)
 
 	•	Prometheus for metrics collection
-(prometheus.png)
-
-
+![Prometheus Running](prometheus.png)
+•	Grafana for dashboard visualization
+![Grafana Running](grafana.png)
+•	PG Badger for PostgreSQL logs analysis
+![PGBadger Running](pg-badger.png)
 
 
 
