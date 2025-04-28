@@ -8,6 +8,9 @@ Deployed and verified the following services using Docker Compose:
 	•	Prometheus for metrics collection
 	•	Grafana for dashboard visualization
 	•	PG Badger for PostgreSQL logs analysis
+        •       PG admin
+
+ 
 
 Docker Compose deployment and services running 
 ![Docker Running](dockercompose.png)
