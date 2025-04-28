@@ -1,4 +1,4 @@
-PostgreSQL Autovacuum Stress Testing Project
+PostgreSQL Autovacuum Stress Testing 
 
 ⸻
 
@@ -46,7 +46,7 @@ Separate Python script (autovacuum_stress.py) runs:
 
 ✅ PostgreSQL autovacuum gets progressively overwhelmed.
 
-![Autovacuum stressed](autovacuum-panel.png)
+![Autovacuum stressed](stress-test.png)
 
 
 
