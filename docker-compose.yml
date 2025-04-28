@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    platform: linux/arm64/v8
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db_tune_autovacuum
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - pg_data:/var/lib/postgresql/data
+      - ./config/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./pg_logs/postgresql:/var/log/postgresql
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4
+    platform: linux/arm64/v8
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+  prometheus:
+    image: prom/prometheus:latest
+    platform: linux/arm64/v8
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    platform: linux/arm64/v8
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "admin"
+    depends_on:
+      - prometheus
+    restart: always
+
+  postgres_exporter:
+    image: quay.io/prometheuscommunity/postgres-exporter:v0.15.0
+    platform: linux/arm64/v8
+    container_name: postgres_exporter
+    environment:
+      - DATA_SOURCE_NAME=postgresql://postgres:postgres@postgres:5432/db_tune_autovacuum?sslmode=disable
+    ports:
+      - "9187:9187"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+
+  pgbadger:
+    build: ./pgbadger_reports
+    container_name: pgbadger
+    platform: linux/arm64
+    depends_on:
+      - postgres
+    volumes:
+      - ./pg_logs/postgresql:/var/log/postgresql
+      - ./pgbadger_reports:/var/www/html
+    ports:
+      - "8080:80"
+
+volumes:
+  pg_data:
+  prometheus_data:
