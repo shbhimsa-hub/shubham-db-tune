@@ -12,15 +12,15 @@ Deployed and verified the following services using Docker Compose:
 
  
 
-Docker Compose deployment and services running 
+        •	 Docker Compose deployment and services running 
 ![Docker Running](dockercompose.png)
 ![Docker Running](docker-ps.png)
 
 	•	Prometheus for metrics collection
 ![Prometheus Running](prometheus.png)
-•	Grafana for dashboard visualization
+        •	Grafana for dashboard visualization
 ![Grafana Running](grafana.png)
-•	PG Badger for PostgreSQL logs analysis
+        •	PG Badger for PostgreSQL logs analysis
 ![PGBadger Running](pg-badger.png)
 
 
