@@ -49,23 +49,23 @@ This generates constant dead tuples faster than default autovacuum settings can 
 
 ## **Signs That Autovacuum Is Failing**
 
-## **Dead tuples continuously growing -**
+### **Dead tuples continuously growing -**
 
 Autovacuum is not cleaning fast enough, leading to dead tuple buildup.
 
-## **Last autovacuum timestamps are old -**
+### **Last autovacuum timestamps are old -**
 
 Tables are not being vacuumed on schedule, indicating autovacuum lag.
 
-## **Transactions Per Second starts dropping -**
+### **Transactions Per Second starts dropping -**
 
 Database performance degrades due to bloated tables.
 
-## **CPU usage rises abnormally -**
+### **CPU usage rises abnormally -**
 
 Autovacuum workers and user queries compete heavily for CPU resources.
 
-## **Disk space usage grows rapidly -**
+### **Disk space usage grows rapidly -**
 
 Dead tuples occupy unreclaimed disk space, risking full disk errors.
 
